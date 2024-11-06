@@ -179,7 +179,6 @@ const Market = () => {
           </div>
       
         ))}
-        
 
 
       </div>

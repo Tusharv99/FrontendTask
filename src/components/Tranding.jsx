@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { FaHeart } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
@@ -74,58 +74,69 @@ const auctionData = [
 ];
 
 const Tranding = () => {
+
+  const scrollContainerRef = useRef(null);
+
+  const handleScroll = (direction) => {
+    if (!scrollContainerRef.current) return;
+    
+    const scrollAmount = 400; // Adjust the scroll amount as needed (this is the distance for each scroll)
+    if (direction === "left") {
+      scrollContainerRef.current.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth", // Smooth scrolling
+      });
+    } else if (direction === "right") {
+      scrollContainerRef.current.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth", // Smooth scrolling
+      });
+    }
+  };
+
   return (
       <div className="p-10">
     <div className="flex justify-between items-center mt-1">
   <h2 className="text-xl sm:text-lg md:text-2xl font-bold">Tranding Auction</h2>
   
-  <div className="flex items-center gap-4 sm:gap-6">
-    {/* Button container with previous/next buttons */}
-    <div className="flex">
-      <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center">
-        <MdOutlineKeyboardArrowLeft className="text-xl" />
-      </button>
-      <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center ml-2">
-        <MdKeyboardArrowRight className="text-xl" />
+  <div className="flex items-center gap-4 sm:gap-6 scrollbar-hide">
+      <div className="flex">
+        <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center" onClick={() => handleScroll("left")} >
+          <MdOutlineKeyboardArrowLeft className="text-xl" />
+        </button>
+        <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center ml-2"  onClick={() => handleScroll("right")} >
+          <MdKeyboardArrowRight className="text-xl" />
+        </button>
+      </div>
+      <button className="bg-gray-200 text-gray-600 px-3 py-2 rounded-md flex items-center hover:bg-blue-500 transition hover:text-white text-xs sm:text-sm md:text-base">
+        View All <FaArrowRight />
       </button>
     </div>
-
-    {/* View All Button */}
-    <button className="bg-gray-200 text-gray-600 px-3 py-2 rounded-md flex items-center hover:bg-blue-500 transition hover:text-white text-xs sm:text-sm md:text-base">
-      View All <FaArrowRight />
-    </button>
-  </div>
 </div>
 
 
-      <div className="flex space-x-4 overflow-x-auto scrollbar-hide">
-        {auctionData.map((auction) => (
-          <div key={auction.id} className="bg-white rounded-lg shadow-md p-4 w-60 flex-shrink-0 relative">
-            {/* pop profile picture and username */}
-            <div className="flex items-center mb-2 justify-between w-full">
-              <div className="flex items-center">
-                <img src={auction.profileImage} className="h-6 w-6 rounded-full mr-2" />
-                <span className="text-sm text-gray-600">{auction.username}</span>
-              </div>
-              <button className="h-5 w-5 border border-gray-400 rounded-full flex items-center justify-center bg-white">
-                <FaHeart className="text-pink-500 text-sm" />
-              </button>
-            </div>
-
-            {/*  item image */}
-            <img src={auction.auctionImage} className="h-60 w-full object-cover rounded-lg mb-2 overflow-hidden" alt="Auction item" />
-
-
-            {/* profile Pic username */}
-            <div className="flex items-center mb-2">
-              <img src={auction.profileImage} className="h-6 w-6 rounded-full mr-2" />
+<div ref={scrollContainerRef} className="flex gap-8 space-x-4 py-8 overflow-x-auto scrollbar-hide">
+      {auctionData.map((auction) => (
+        <div key={auction.id}  className="bg-white rounded-lg shadow-lg p-4 w-60 flex-shrink-0 relative" >
+          <div className="flex items-center mb-2 justify-between w-full">
+            <div className="flex items-center">
+              <img src={auction.profileImage} className="h-6 w-6 rounded-full mr-2"/>
               <span className="text-sm text-gray-600">{auction.username}</span>
             </div>
+            <button className="h-5 w-5 border border-gray-400 rounded-full flex items-center justify-center bg-white">
+              <FaHeart className="text-pink-500 text-sm" />
+            </button>
+          </div>
 
-            <h3 className="font-semibold">{auction.title}</h3>
+          <img src={auction.auctionImage} className="h-60 w-full object-cover rounded-lg mb-2 overflow-hidden"/>
+          <div className="flex items-center mb-2">
+            <img src={auction.profileImage} className="h-6 w-6 rounded-full mr-2" />
+            <span className="text-sm text-gray-600">{auction.username}</span>
+          </div>
 
-            {/* bid date */}
-            <div className='w-full'>
+          <h3 className="font-semibold">{auction.title}</h3>
+
+          <div className="w-full">
             <div className="flex justify-between mt-2 text-sm text-gray-600">
               <span>Current bid</span>
               <span>Ending in</span>
@@ -134,10 +145,10 @@ const Tranding = () => {
               <span>{auction.currentBid}</span>
               <span>{auction.endingTime}</span>
             </div>
-            </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
+    </div>
     </div>
   );
 };
