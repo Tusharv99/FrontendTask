@@ -15,19 +15,27 @@ const Sellers = () => {
 
     return (
       <div className="p-10">
-      <div className="flex justify-between mt-1">
-        <h2 className="text-2xl  font-bold mb-4">Top Sellers</h2>
-        <div className='flex gap-12 items-center '>
-        <div className='flex'>
-              <button className='h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center'>  <MdOutlineKeyboardArrowLeft className='text-xl' /></button>
-              <button className='h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center ml-2'> <MdKeyboardArrowRight className='text-xl' /></button>
-        </div>
+      <div className="flex justify-between items-center mt-1">
+  <h2 className="text-xl sm:text-lg md:text-2xl font-bold">Top Sellers</h2>
+  
+  <div className="flex items-center gap-4 sm:gap-6">
+    {/* Button container with previous/next buttons */}
+    <div className="flex">
+      <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center">
+        <MdOutlineKeyboardArrowLeft className="text-xl" />
+      </button>
+      <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center ml-2">
+        <MdKeyboardArrowRight className="text-xl" />
+      </button>
+    </div>
 
-        <button className="bg-gray-200 text-gray-600 px-3 py-2 rounded-md flex items-center hover:bg-blue-500 transition hover:text-white">
-          View All <FaArrowRight />
-        </button>
-        </div>
-      </div>
+    {/* View All Button */}
+    <button className="bg-gray-200 text-gray-600 px-3 py-2 rounded-md flex items-center hover:bg-blue-500 transition hover:text-white text-xs sm:text-sm md:text-base">
+      View All <FaArrowRight />
+    </button>
+  </div>
+</div>
+
         <div className="flex space-x-4 overflow-x-auto scrollbar-hide gap-6 mt-9">
             {profiles.map((profile, index) => (
                 <div key={index} className="bg-gray-100 p-4 rounded-lg text-center">

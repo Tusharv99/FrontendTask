@@ -6,10 +6,10 @@ const Land = () => {
              
  
   <div className="text-center lg:text-left lg:w-1/2 px-4 mb-0 lg:mr-4">
-    <h1 className="text-4xl lg:text-6xl font-bold text-yellow-500">NFT</h1>
-    <h1 className="text-4xl lg:text-6xl font-bold text-yellow-500">MARKETPLACE</h1>
+    <h1 className="text-4xl lg:text-6xl font-bold text-yellow-500 text-stroke ">NFT</h1>
+    <h1 className="text-4xl lg:text-6xl font-bold text-yellow-500 text-stroke">MARKETPLACE</h1>
     <h1 className="text-4xl lg:text-6xl font-bold text-pink-500 mt-4">BASED ON</h1>
-    <h1 className="text-4xl lg:text-6xl font-bold text-pink-500">KALPTANTRA</h1>
+    <h1 className="text-4xl lg:text-6xl font-bold bg-gradient-to-b from-pink-500 via-pink-300 to-transparent bg-clip-text text-transparent">KALPTANTRA</h1>
 
     <div className="flex mt-8 space-x-4 justify-center lg:justify-start">
       <button className="px-6 lg:px-8 py-1 text-sm lg:text-base bg-yellow-500 text-white font-bold rounded">

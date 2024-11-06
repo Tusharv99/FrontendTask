@@ -46,19 +46,27 @@ const collections = [
 const Collections = () => {
   return (
       <div className="p-10">
-      <div className="flex justify-between mt-1">
-        <h2 className="text-2xl  font-bold">Hot Collections</h2>
-        <div className='flex gap-12 items-center '>
-        <div className='flex'>
-              <button className='h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center'>  <MdOutlineKeyboardArrowLeft className='text-xl' /></button>
-              <button className='h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center ml-2'> <MdKeyboardArrowRight className='text-xl' /></button>
-        </div>
+     <div className="flex justify-between items-center mt-1">
+  <h2 className="text-xl sm:text-lg md:text-2xl font-bold">Hot Collections</h2>
+  
+  <div className="flex items-center gap-4 sm:gap-6">
+    {/* Button container with previous/next buttons */}
+    <div className="flex">
+      <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center">
+        <MdOutlineKeyboardArrowLeft className="text-xl" />
+      </button>
+      <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center ml-2">
+        <MdKeyboardArrowRight className="text-xl" />
+      </button>
+    </div>
 
-        <button className="bg-gray-200 text-gray-600 px-3 py-2 rounded-md flex items-center hover:bg-blue-500 transition hover:text-white">
-          View All <FaArrowRight />
-        </button>
-        </div>
-      </div>
+    {/* View All Button */}
+    <button className="bg-gray-200 text-gray-600 px-3 py-2 rounded-md flex items-center hover:bg-blue-500 transition hover:text-white text-xs sm:text-sm md:text-base">
+      View All <FaArrowRight />
+    </button>
+  </div>
+</div>
+
       <div className='grid grid-cols-1 md:grid-cols-3 gap-10 p-8'>
   {collections.map((collection) => (
     <div key={collection.title} className="bg-gray-100 rounded-lg shadow-lg p-4 w-full">
@@ -83,30 +91,27 @@ const Collections = () => {
           <h3 className='text-center font-semibold text-xl sm:text-2xl md:text-4xl'> Mint, buy and sell <br />or just launch your own NFT Store</h3>
     </div>
   
-      <div className='flex justify-center items-center p-8 mt-10'>
-        <div className='flex justify-center items-center flex-col bg-gray-100 p-10 rounded-md h-64 w-64'>
-             <div className='h-20 w-20 rounded-full flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-100 to-blue-300 text-blue-600 text-2xl'><IoShieldHalfOutline />
-             </div>
-             <h3 className='text-center font-semibold'>Buy and sell your <br />NFTs</h3>
-
-        </div>
-        <div className='flex justify-center items-center flex-col bg-gray-100 p-10 rounded-md border-2 border-blue-500 h-72 w-72'>
-             <div className='h-20 w-20 rounded-full flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-100 to-blue-300 text-blue-600 text-2xl'><MdOutlineRocketLaunch />
-             </div>
-             <h3 className='text-center font-semibold'>Discover <br />top artists & creators</h3>
-             <p className='text-center text-gray-400 text-xs'>Explore beautiful digital art by talented artists <br /> around the world.</p>
-
+    <div className='flex flex-wrap justify-center items-center p-8 mt-10 gap-0'>
+        <div className='flex justify-center items-center flex-col bg-gray-100 p-10 rounded-md h-64 w-64 md:h-72 md:w-72'>
+          <div className='h-20 w-20 rounded-full flex items-center justify-center bg-[radial-gradient     (ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-100 to-blue-300 text-blue-600  text-2xl'> <IoShieldHalfOutline />
+          </div>
+              <h3 className='text-center font-semibold'>Buy and sell your <br />NFTs</h3>
         </div>
 
-        <div className='flex justify-center items-center flex-col bg-gray-100 p-10 rounded-md h-64 w-64'>
-             <div className='h-20 w-20 rounded-full flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-100 to-blue-300 text-blue-600 text-2xl'><HiMiniWallet />
+          <div className='flex justify-center items-center flex-col bg-gray-100 p-10 rounded-md border-2 border-blue-500 h-72 w-72 md:h-80 md:w-80'>
+               <div className='h-20 w-20 rounded-full flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-100 to-blue-300 text-blue-600 text-2xl'> <MdOutlineRocketLaunch />
+              </div>
+              <h3 className='text-center font-semibold'>Discover <br />top artists & creators</h3>
+             <p className='text-center text-gray-400 text-xs'> Explore beautiful digital art by talented artists<br /> around the world. </p>
+        </div>
 
-             </div>
+        <div className='flex justify-center items-center flex-col bg-gray-100 p-10 rounded-md h-64 w-64 md:h-72 md:w-72'>
+               <div className='h-20 w-20 rounded-full flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-100 to-blue-300 text-blue-600 text-2xl'> <HiMiniWallet />
+               </div>
              <h3 className='text-center font-semibold'>Earn money by trading<br />NFTs</h3>
-
         </div>
-        
-      </div>   
+   </div>
+ 
 
 
       </div>

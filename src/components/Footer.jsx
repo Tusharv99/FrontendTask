@@ -6,13 +6,15 @@ import { AiFillInstagram } from "react-icons/ai";
 import { FaYoutube } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 import { FaFacebookSquare } from "react-icons/fa";
+import { PiCopyrightLight } from "react-icons/pi";
+
 
 
 
 
 const Footer = () => {
   return (
-    <div className='w-full mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 bg-gray-100'>
+    <div className='w-full mx-auto py-12 px-4 sm:px-6  lg:px-8 bg-gray-100'>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
             <div className='text-gray-600 text-md'>
                   <h2 className='text-black font-semibold text-xl sm:text-2xl lg:text-3xl'>P2E Pro</h2>
@@ -49,7 +51,7 @@ const Footer = () => {
 
          <div >
             <h3 className='font-semibold mb-4'>Join NewsLetters</h3>
-               <div className='flex flex-col sm:flex-row items-center rounded-lg p-1 shadow-md bg-white'>
+               <div className='flex flex-col sm:flex-row items-center rounded-lg p-2 shadow-md bg-white'>
                    <input type="email" placeholder='Your Email'
                       className='bg-white px-4 py-1 text-gray-700 outline-none w-full sm:w-auto mb-3 sm:mb-0 rounded-md'/>
                    <button className='bg-blue-500 text-white flex items-center justify-center px-4 py-1 rounded-md -ml-12'>
@@ -66,6 +68,11 @@ const Footer = () => {
              </div>
          </div>
 
+      </div>
+
+      <div className='mx-auto h-1 w-[90%] bg-gray-200 mt-5'></div>
+      <div className='flex items-center justify-center mt-7'>
+            <p className='flex text-gray-500 text-sm'>Copyright <PiCopyrightLight /> 2022 created by love by <span className='text-blue-500'>PE2 Pro NFT</span></p>
       </div>
       
     </div>

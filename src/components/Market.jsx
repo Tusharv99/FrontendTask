@@ -137,7 +137,7 @@ const Market = () => {
       ))}
        </div>
 
-       <div className="flex  flex-wrap justify-start  mt-9 gap-10 p-10 justify-center">
+       <div className="flex flex-wrap justify-start mt-9 gap-10 p-10 justify-center max-h-[80vh] sm:max-h-[70vh] md:max-h-[60vh] lg:max-h-none overflow-y-auto lg:overflow-y-visible lg:h-auto">
         {MarketData.map((market) => (
           <div key={market.id} className="bg-white rounded-lg shadow-md p-4 w-60 flex-shrink-0 relative mb-10">
             {/* pop profile picture and username */}
@@ -180,11 +180,12 @@ const Market = () => {
       
         ))}
         
-        <button className='flex py-2 px-5 w-full sm:w-[30%] bg-slate-100 items-center justify-center text-lg font-light rounded-lg hover:bg-blue-500 transition hover:text-white'>
-  <TbReload /> View More
-</button>
+
 
       </div>
+      <button className="flex py-2 px-5 w-full sm:w-[30%] md:w-[20%] lg:w-[25%] bg-slate-100 items-center justify-center text-lg font-light rounded-lg hover:bg-blue-500 transition hover:text-white mx-auto">
+  <TbReload /> View More
+</button>
 
 
     </div>
