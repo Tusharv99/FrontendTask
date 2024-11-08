@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { FaHeart } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
@@ -73,7 +73,7 @@ const auctionData = [
   },
 ];
 
-const Tranding = () => {
+const Tranding = ({ darkMode, toggleDarkMode }) => {
 
   const scrollContainerRef = useRef(null);
 
@@ -93,18 +93,22 @@ const Tranding = () => {
       });
     }
   };
+ 
 
   return (
-      <div className="p-10">
+    <div className={`${darkMode && "dark" }`}>
+      <div className="p-10 bg-white dark:bg-slate-900">
     <div className="flex justify-between items-center mt-1">
-  <h2 className="text-xl sm:text-lg md:text-2xl font-bold">Tranding Auction</h2>
+  <h2 className="text-xl sm:text-lg md:text-2xl font-bold dark:text-white">Tranding Auction</h2>
   
   <div className="flex items-center gap-4 sm:gap-6 scrollbar-hide">
       <div className="flex">
-        <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center" onClick={() => handleScroll("left")} >
+        <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center" 
+           onClick={() => handleScroll("left")} >
           <MdOutlineKeyboardArrowLeft className="text-xl" />
         </button>
-        <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center ml-2"  onClick={() => handleScroll("right")} >
+        <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center ml-2" 
+           onClick={() => handleScroll("right")} >
           <MdKeyboardArrowRight className="text-xl" />
         </button>
       </div>
@@ -117,11 +121,11 @@ const Tranding = () => {
 
 <div ref={scrollContainerRef} className="flex gap-8 space-x-4 py-8 overflow-x-auto scrollbar-hide">
       {auctionData.map((auction) => (
-        <div key={auction.id}  className="bg-white rounded-lg shadow-lg p-4 w-60 flex-shrink-0 relative" >
+        <div key={auction.id}  className="bg-white dark:bg-slate-500 rounded-lg shadow-lg p-4 w-60 flex-shrink-0 relative" >
           <div className="flex items-center mb-2 justify-between w-full">
             <div className="flex items-center">
               <img src={auction.profileImage} className="h-6 w-6 rounded-full mr-2"/>
-              <span className="text-sm text-gray-600">{auction.username}</span>
+              <span className="text-sm text-gray-600  dark:text-white">{auction.username}</span>
             </div>
             <button className="h-5 w-5 border border-gray-400 rounded-full flex items-center justify-center bg-white">
               <FaHeart className="text-pink-500 text-sm" />
@@ -131,25 +135,27 @@ const Tranding = () => {
           <img src={auction.auctionImage} className="h-60 w-full object-cover rounded-lg mb-2 overflow-hidden"/>
           <div className="flex items-center mb-2">
             <img src={auction.profileImage} className="h-6 w-6 rounded-full mr-2" />
-            <span className="text-sm text-gray-600">{auction.username}</span>
+            <span className="text-sm text-gray-600  dark:text-white">{auction.username}</span>
           </div>
 
-          <h3 className="font-semibold">{auction.title}</h3>
+          <h3 className="font-semibold  dark:text-gray-100">{auction.title}</h3>
 
           <div className="w-full">
             <div className="flex justify-between mt-2 text-sm text-gray-600">
-              <span>Current bid</span>
-              <span>Ending in</span>
+              <span className=' dark:text-gray-100'>Current bid</span>
+              <span className=' dark:text-gray-100'>Ending in</span>
             </div>
             <div className="flex justify-between font-semibold text-gray-800">
-              <span>{auction.currentBid}</span>
-              <span>{auction.endingTime}</span>
+              <span className=' dark:text-gray-100'>{auction.currentBid}</span>
+              <span className=' dark:text-gray-100'>{auction.endingTime}</span>
             </div>
           </div>
         </div>
       ))}
     </div>
     </div>
+    </div>
+
   );
 };
 

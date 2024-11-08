@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { FaArrowRight } from "react-icons/fa6";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { MdKeyboardArrowRight } from "react-icons/md";
@@ -11,6 +11,8 @@ import { HiMiniWallet } from "react-icons/hi2";
 
 
 const collections = [
+
+
       {
           title: "Sound of Silence",
           count: "235 in Collection",
@@ -43,19 +45,41 @@ const collections = [
       }
   ];
 
-const Collections = () => {
+
+const Collections = ({ darkMode, toggleDarkMode }) => {
+
+  const scrollCont = useRef(null)
+  const handleScroll=(direction)=>{
+         if(!scrollCont.current) return
+         
+         const scrollAmount =400
+         if(direction === "left"){
+           scrollCont.current.scrollBy({
+             left: -scrollAmount,
+             behavior: "smooth"
+           })
+         }else if (direction === "right") {
+          scrollCont.current.scrollBy({
+            left: scrollAmount,
+            behavior: "smooth", // Smooth scrolling
+          });
+         }
+  }
   return (
-      <div className="p-10">
+    <div className={`${darkMode && "dark" }`}>
+      <div className="p-10 bg-white dark:bg-slate-900">
      <div className="flex justify-between items-center mt-1">
-  <h2 className="text-xl sm:text-lg md:text-2xl font-bold">Hot Collections</h2>
+  <h2 className="text-xl sm:text-lg md:text-2xl font-bold text-black dark:text-white">Hot Collections</h2>
   
   <div className="flex items-center gap-4 sm:gap-6">
     {/* Button container with previous/next buttons */}
     <div className="flex">
-      <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center">
+      <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center"
+      onClick={()=>handleScroll("left")}>
         <MdOutlineKeyboardArrowLeft className="text-xl" />
       </button>
-      <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center ml-2">
+      <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center ml-2"
+         onClick={() => handleScroll("right")}>
         <MdKeyboardArrowRight className="text-xl" />
       </button>
     </div>
@@ -67,9 +91,9 @@ const Collections = () => {
   </div>
 </div>
 
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-10 p-8'>
+      <div ref={scrollCont} className='grid grid-cols-1 md:grid-cols-3 gap-10 p-8'>
   {collections.map((collection) => (
-    <div key={collection.title} className="bg-gray-100 rounded-lg shadow-lg p-4 w-full">
+    <div key={collection.title} className="bg-gray-100 dark:bg-slate-500 dark:text-white rounded-lg shadow-lg p-4 w-full">
       <img src={collection.mainImage} alt="" className='rounded-lg mb-4' />
       <div className='flex justify-between mb-4'>
         {collection.subImages.map((subImage) => (
@@ -88,31 +112,31 @@ const Collections = () => {
 
 
     <div className='flex justify-center items-center text-3xl mt-10 '>
-          <h3 className='text-center font-semibold text-xl sm:text-2xl md:text-4xl'> Mint, buy and sell <br />or just launch your own NFT Store</h3>
+          <h3 className='text-center font-semibold text-xl sm:text-2xl md:text-4xl text-black dark:text-white'> Mint, buy and sell <br />or just launch your own NFT Store</h3>
     </div>
   
     <div className='flex flex-wrap justify-center items-center p-8 mt-10 gap-0'>
-        <div className='flex justify-center items-center flex-col bg-gray-100 p-10 rounded-md h-64 w-64 md:h-72 md:w-72'>
-          <div className='h-20 w-20 rounded-full flex items-center justify-center bg-[radial-gradient     (ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-100 to-blue-300 text-blue-600  text-2xl'> <IoShieldHalfOutline />
+        <div className='flex justify-center items-center flex-col bg-gray-100 dark:bg-slate-500 dark:text-white p-10 rounded-md h-64 w-64 md:h-72 md:w-72'>
+          <div className='h-20 w-20 rounded-full flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-100 to-blue-300 text-blue-600  text-2xl'> <IoShieldHalfOutline />
           </div>
               <h3 className='text-center font-semibold'>Buy and sell your <br />NFTs</h3>
         </div>
 
-          <div className='flex justify-center items-center flex-col bg-gray-100 p-10 rounded-md border-2 border-blue-500 h-72 w-72 md:h-80 md:w-80'>
+          <div className='flex justify-center items-center flex-col bg-gray-100 dark:bg-slate-500 dark:text-white p-10 rounded-md border-2 border-blue-500 h-72 w-72 md:h-80 md:w-80'>
                <div className='h-20 w-20 rounded-full flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-100 to-blue-300 text-blue-600 text-2xl'> <MdOutlineRocketLaunch />
               </div>
               <h3 className='text-center font-semibold'>Discover <br />top artists & creators</h3>
-             <p className='text-center text-gray-400 text-xs'> Explore beautiful digital art by talented artists<br /> around the world. </p>
+             <p className='text-center text-gray-400 text-xs dark:text-gray-100'> Explore beautiful digital art by talented artists<br /> around the world. </p>
         </div>
 
-        <div className='flex justify-center items-center flex-col bg-gray-100 p-10 rounded-md h-64 w-64 md:h-72 md:w-72'>
+        <div className='flex justify-center items-center flex-col bg-gray-100 dark:bg-slate-500 dark:text-white p-10 rounded-md h-64 w-64 md:h-72 md:w-72'>
                <div className='h-20 w-20 rounded-full flex items-center justify-center bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white via-blue-100 to-blue-300 text-blue-600 text-2xl'> <HiMiniWallet />
                </div>
              <h3 className='text-center font-semibold'>Earn money by trading<br />NFTs</h3>
         </div>
    </div>
  
-
+   </div>
 
       </div>
   )

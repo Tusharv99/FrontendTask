@@ -25,7 +25,9 @@ const buttons = [
       { id: 6, icon: <HiOutlinePhotograph />, label: 'Photography' },
       { id: 7, icon: <CgGames />, label: 'Games' },
       { id: 8, icon: <LuUtilityPole />, label: 'Utility' },
-      { id: 9, icon: <MdOutlineReadMore />, label: 'See More' },
+      { id: 9, icon: <MdElectricBolt />, label: 'Lifestyle' },
+      { id: 10, icon: <MdOutlineSportsBasketball />, label: 'Tech' },
+      { id: 11, icon: <CiVideoOn />, label: 'News' },
     ];
 
 
@@ -100,20 +102,40 @@ const MarketData = [
 
 
 
-const Market = () => {
+const Market = ({ darkMode, toggleDarkMode }) => {
+
+  const initialItemsCount = 4;
+  const [visibleItems, setVisibleItems] = useState(initialItemsCount);
+
+  const handleViewMore = () => {
+    if (visibleItems >= MarketData.length) {
+      setVisibleItems(initialItemsCount);
+    } else {
+      // Increase visible items by 4
+      setVisibleItems((prev) => prev + 4);
+    }
+  };
 
 
       const [activeButton, setActiveButton] = useState(null);
+      const [showAll, setShowAll] = useState(false)
+      const handleSeeMore=()=>{
+        setShowAll(true)
+      }
+      const handleLess=()=>{
+        setShowAll(false)
+      }
 
 
   return (
-    <div className='p-10'>
+    <div className={`${darkMode && "dark" }`}>
+    <div className='p-10 bg-white dark:bg-slate-900 '>
        <div className='flex items-center justify-between'>
             <div className='flex'>
-                  <h1 className='text-3xl font-bold mb-4'>Market 🔥</h1>
+                  <h1 className='text-3xl font-bold mb-4 dark:text-white'>Market 🔥</h1>
             </div>
           <div className='flex gap-4'>
-            <div className="hidden md:flex items-center bg-gray-100 rounded px-3 py-1">
+            <div className="hidden md:flex items-center bg-gray-100  rounded px-3 py-1">
                <i className="text-gray-500 mr-0"></i><CiSearch />
                 <input type="text" placeholder="Search" className="bg-gray-100 outline-none" />
             </div>
@@ -123,7 +145,8 @@ const Market = () => {
        </div>
 
        <div className='flex flex-wrap gap-6 mt-6 '>
-      {buttons.map((button) => (
+      {buttons .slice(0,showAll ? buttons.length : 8)
+      .map((button) => (
         <button
           key={button.id}
           onClick={() => setActiveButton(button.id)}
@@ -135,58 +158,60 @@ const Market = () => {
           {button.label}
         </button>
       ))}
+      {buttons.length> 8 &&(
+        <button 
+        onClick={showAll? handleLess : handleSeeMore}
+        className="flex px-5 py-1 rounded-3xl items-center bg-gray-100 text-gray-800">
+       {showAll? (
+         <MdOutlineReadMore className='transform rotate-180'/>
+       ):(
+        <MdOutlineReadMore/>
+       )}
+       {showAll? "See Less" : "See More"}
+        </button>
+      )}
        </div>
 
        <div className="flex flex-wrap justify-start mt-9 gap-10 p-10 justify-center max-h-[80vh] sm:max-h-[70vh] md:max-h-[60vh] lg:max-h-none overflow-y-auto lg:overflow-y-visible lg:h-auto">
-        {MarketData.map((market) => (
-          <div key={market.id} className="bg-white rounded-lg shadow-md p-4 w-60 flex-shrink-0 relative mb-10">
-            {/* pop profile picture and username */}
-            <div className="flex items-center mb-2 justify-between w-full">
-              <div className="flex items-center">
-                <img src={market.profileImage} className="h-6 w-6 rounded-full mr-2" />
-                <span className="text-sm text-gray-600">{market.username}</span>
-              </div>
+      {MarketData.slice(0, visibleItems).map((market) => (
+        <div key={market.id} className="bg-white dark:bg-slate-500 rounded-lg shadow-md p-4 w-60 flex-shrink-0 relative mb-10">
+          <div className="flex items-center mb-2 justify-between w-full">
+            <div className="flex items-center">
+              <img src={market.profileImage} className="h-6 w-6 rounded-full mr-2" alt="profile" />
+              <span className="text-sm text-gray-600 dark:text-gray-200">{market.username}</span>
             </div>
-
-            {/*  item image */}
-            <img src={market.marketImage} className="h-60 w-full object-cover rounded-lg mb-2 overflow-hidden" alt="market item" />
-
-
-            {/* profile Pic username */}
-            <div className="flex items-center justify-between mb-2">
-               <div className="flex items-center">
-                   <img src={market.profileImage} className="h-6 w-6 rounded-full mr-2" />
-                   <span className="text-sm text-gray-600">{market.username}</span>
-               </div>
-              <button className="h-5 w-5 border border-gray-400 rounded-full flex items-center justify-center bg-white">
-                          <FaHeart className="text-pink-500 text-sm" />
-              </button>
-            </div>
-
-
-            <h3 className="font-semibold">{market.title}</h3>
-
-            {/* bid date */}
-            
-            <div className="flex justify-between mt-2 text-sm text-gray-600 items-center h-10">
-                 <div className='flex flex-col'>
-                      <span>Current bid</span>
-                      <span>{market.currentBid}</span>
-                </div>
-               <button className='bg-blue-500 text-white text-xs px-3 py-1 rounded-xl'> Place a bid </button>
-             </div>
-        
           </div>
+          <img src={market.marketImage} className="h-60 w-full object-cover rounded-lg mb-2 overflow-hidden" alt="market item" />
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center">
+              <img src={market.profileImage} className="h-6 w-6 rounded-full mr-2" alt="profile" />
+              <span className="text-sm text-gray-600 dark:text-gray-200">{market.username}</span>
+            </div>
+            <button className="h-5 w-5 border border-gray-400 rounded-full flex items-center justify-center bg-white">
+              <FaHeart className="text-pink-500 text-sm" />
+            </button>
+          </div>
+          <h3 className="font-semibold dark:text-white">{market.title}</h3>
+          <div className="flex justify-between mt-2 text-sm text-gray-600 dark:text-gray-200 items-center h-10">
+            <div className="flex flex-col">
+              <span className='dark:text-gray-200'>Current bid</span>
+              <span className='dark:text-gray-200'>{market.currentBid}</span>
+            </div>
+            <button className="bg-blue-500 text-white text-xs px-3 py-1 rounded-xl">Place a bid</button>
+          </div>
+        </div>
+      ))}
       
-        ))}
-
-
-      </div>
-      <button className="flex py-2 px-5 w-full sm:w-[30%] md:w-[20%] lg:w-[25%] bg-slate-100 items-center justify-center text-lg font-light rounded-lg hover:bg-blue-500 transition hover:text-white mx-auto">
-  <TbReload /> View More
-</button>
-
-
+      {MarketData.length > initialItemsCount && (
+        <button
+          onClick={handleViewMore}
+          className="flex py-2 px-5 w-full sm:w-[30%] md:w-[20%] lg:w-[25%] bg-slate-100 items-center justify-center text-lg font-light rounded-lg hover:bg-blue-500 transition hover:text-white mx-auto mt-4"
+        >
+          <TbReload /> {visibleItems >= MarketData.length ? "View Less" : "View More"}
+        </button>
+      )}
+    </div>
+    </div>
     </div>
   )
 }

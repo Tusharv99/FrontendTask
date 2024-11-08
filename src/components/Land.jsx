@@ -2,14 +2,14 @@ import React from 'react'
 
 const Land = () => {
   return (
-<div className="bg-gradient-to-tr from-amber-100 to-blue-100 flex flex-col lg:flex-row items-center lg:justify-between p-6  lg:px-16 pt-10 lg:pt-20">
+<div className="bg-gradient-to-tr from-amber-100 to-blue-100 flex flex-col lg:flex-row items-center lg:justify-between p-6  lg:px-16 pt-10 lg:pt-20 dark:bg-gradient-to-tr dark:from-amber-600 dark:to-blue-600">
              
  
   <div className="text-center lg:text-left lg:w-1/2 px-4 mb-0 lg:mr-4">
     <h1 className="text-4xl lg:text-6xl font-bold text-yellow-500 text-stroke ">NFT</h1>
     <h1 className="text-4xl lg:text-6xl font-bold text-yellow-500 text-stroke">MARKETPLACE</h1>
     <h1 className="text-4xl lg:text-6xl font-bold text-pink-500 mt-4">BASED ON</h1>
-    <h1 className="text-4xl lg:text-6xl font-bold ">KALPTANTRA</h1>
+    <h1 className="text-4xl lg:text-6xl font-bold  bg-gradient-to-b from-pink-600 via-pink-300 to-white bg-clip-text text-transparent">KALPTANTRA</h1>
 
     <div className="flex mt-8 space-x-4 justify-center lg:justify-start">
       <button className="px-6 lg:px-8 py-1 text-sm lg:text-base bg-yellow-500 text-white font-bold rounded">

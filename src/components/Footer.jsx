@@ -12,15 +12,17 @@ import { PiCopyrightLight } from "react-icons/pi";
 
 
 
-const Footer = () => {
+const Footer = ({ darkMode, toggleDarkMode }) => {
   return (
-    <div className='w-full mx-auto py-12 px-4 sm:px-6  lg:px-8 bg-gray-100'>
+
+ <div className={`${darkMode && "dark"}`}>
+    <div className='w-full mx-auto py-12 px-4 sm:px-6  lg:px-8 bg-gray-100 dark:bg-slate-900 dark:text-white'>
       <div className='grid grid-cols-1 md:grid-cols-4 gap-8'>
             <div className='text-gray-600 text-md'>
-                  <h2 className='text-black font-semibold text-xl sm:text-2xl lg:text-3xl'>P2E Pro</h2>
-                  <p className='mt-2'>P2E Pro NFT is a shared liquidity NFT <br />
+                  <h2 className='text-black font-semibold text-xl sm:text-2xl lg:text-3xl dark:text-white'>P2E Pro</h2>
+                  <p className='mt-2 dark:text-gray-200'>P2E Pro NFT is a shared liquidity NFT <br />
                   market smart contract</p>
-                  <h2 className='text-black mt-2'>Language</h2>
+                  <h2 className='text-black mt-2 dark:text-white'>Language</h2>
                   <div className='px-5 py-2 items-center justify-between rounded-3xl w-[60%] flex mt-1  border-gray-300 bg-white shadow-md'>
                         <p className='flex items-center gap-2'><FaFlagUsa className='text-gray-700 rounded-full bg-gradient-to-t from-blue-600 via-white to-red-500' />English </p>
                    <i><FaAngleDown />
@@ -30,22 +32,22 @@ const Footer = () => {
             <div className=''>
             <h3 className="font-semibold mb-4">Market place</h3>
                <ul className="space-y-2">
-                   <li><a className="text-gray-600">Profile</a></li>
-                   <li><a className="text-gray-600">Marketplace</a></li>
-                   <li><a className="text-gray-600">Creators</a></li>
-                   <li><a className="text-gray-600">Activity</a></li>
-                                <li><a href="#" className="text-gray-600">Collections</a></li>
+                   <li><a className="text-gray-600 dark:text-gray-200 ">Profile</a></li>
+                   <li><a className="text-gray-600 dark:text-gray-200 ">Marketplace</a></li>
+                   <li><a className="text-gray-600 dark:text-gray-200 ">Creators</a></li>
+                   <li><a className="text-gray-600 dark:text-gray-200 ">Activity</a></li>
+                                <li><a href="#" className="text-gray-600 dark:text-gray-200">Collections</a></li>
                </ul>
             </div>
 
             <div>
                 <h3 className="font-semibold mb-4">Company</h3>
                <ul className="space-y-2">
-                   <li><a className="text-gray-600">Upload</a></li>
-                   <li><a className="text-gray-600">Connect wallet</a></li>
-                   <li><a className="text-gray-600">Our blog</a></li>
-                   <li><a className="text-gray-600">Item details</a></li>
-                   <li><a className="text-gray-600">Contact us</a></li>
+                   <li><a className="text-gray-600 dark:text-gray-200 ">Upload</a></li>
+                   <li><a className="text-gray-600 dark:text-gray-200 ">Connect wallet</a></li>
+                   <li><a className="text-gray-600 dark:text-gray-200 ">Our blog</a></li>
+                   <li><a className="text-gray-600 dark:text-gray-200 ">Item details</a></li>
+                   <li><a className="text-gray-600 dark:text-gray-200 ">Contact us</a></li>
                </ul>
             </div>
 
@@ -75,6 +77,7 @@ const Footer = () => {
             <p className='flex text-gray-500 text-sm'>Copyright <PiCopyrightLight /> 2022 created by love by <span className='text-blue-500'>PE2 Pro NFT</span></p>
       </div>
       
+    </div>
     </div>
   )
 }
