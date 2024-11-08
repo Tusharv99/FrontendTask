@@ -148,7 +148,9 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           </div>
         </div>
       )}
+      
     </div>
+    
   );
 };
 

@@ -99,10 +99,10 @@ const Tranding = ({ darkMode, toggleDarkMode }) => {
     <div className={`${darkMode && "dark" }`}>
       <div className="p-10 bg-white dark:bg-slate-900">
     <div className="flex justify-between items-center mt-1">
-  <h2 className="text-xl sm:text-lg md:text-2xl font-bold dark:text-white">Tranding Auction</h2>
+        <h2 className="text-xl sm:text-lg md:text-2xl font-bold dark:text-white">Tranding Auction</h2>
   
-  <div className="flex items-center gap-4 sm:gap-6 scrollbar-hide">
-      <div className="flex">
+       <div className="flex items-center gap-4 sm:gap-6 ">
+         <div className="flex ">
         <button className="h-8 w-8 bg-gray-200 text-gray-600 rounded-full flex items-center justify-center" 
            onClick={() => handleScroll("left")} >
           <MdOutlineKeyboardArrowLeft className="text-xl" />
@@ -115,7 +115,9 @@ const Tranding = ({ darkMode, toggleDarkMode }) => {
       <button className="bg-gray-200 text-gray-600 px-3 py-2 rounded-md flex items-center hover:bg-blue-500 transition hover:text-white text-xs sm:text-sm md:text-base">
         View All <FaArrowRight />
       </button>
+     
     </div>
+   
 </div>
 
 

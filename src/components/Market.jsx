@@ -201,8 +201,10 @@ const Market = ({ darkMode, toggleDarkMode }) => {
           </div>
         </div>
       ))}
-      
-      {MarketData.length > initialItemsCount && (
+     
+    </div>
+     
+    {MarketData.length > initialItemsCount && (
         <button
           onClick={handleViewMore}
           className="flex py-2 px-5 w-full sm:w-[30%] md:w-[20%] lg:w-[25%] bg-slate-100 items-center justify-center text-lg font-light rounded-lg hover:bg-blue-500 transition hover:text-white mx-auto mt-4"
@@ -210,7 +212,6 @@ const Market = ({ darkMode, toggleDarkMode }) => {
           <TbReload /> {visibleItems >= MarketData.length ? "View Less" : "View More"}
         </button>
       )}
-    </div>
     </div>
     </div>
   )
